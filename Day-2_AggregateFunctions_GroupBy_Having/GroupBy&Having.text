@@ -1,0 +1,42 @@
+Problem 1:
+Ans.
+select sector,avg(eps) as AvgEPSPerSector from Stock GROUP by sector HAVING avg(eps) > 10 order by AvgEPSPerSector desc ;
+
+Problem 2;
+Ans.
+SELECT
+  job_id,
+  AVG(salary) AS avg_salary
+FROM
+  employee
+GROUP BY
+  job_id
+  HAVING avg(salary) > 10000
+ORDER BY
+  avg_salary DESC;
+
+Problem 3:
+Ans.
+SELECT
+  job_id,
+  AVG(salary) AS avg_salary
+FROM
+  employee
+GROUP BY
+  job_id
+  HAVING avg(salary) BETWEEN 10000 and 20000 
+ORDER BY
+  avg_salary DESC;
+
+Problem 4:
+Ans.
+SELECT
+  product_id,
+  COUNT(order_id) AS number_of_orders
+FROM
+  sale
+GROUP BY
+  product_id
+HAVING
+  COUNT(order_id) == 1
+  ORDER by number_of_orders desc;

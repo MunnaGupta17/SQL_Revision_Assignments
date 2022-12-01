@@ -1,0 +1,53 @@
+Problem 1:
+Ans. select department_name from department where department_id = (SELECT department_id FROM employee WHERE salary > 10000);
+
+Problem 2:
+Ans. SELECT department_id from employee where job_id = (SELECT job_id FROM employee WHERE salary > 10000);
+
+Problem 3:
+Ans. SELECT product_id, COUNT(*) AS number_of_orders FROM sale GROUP by product_id order by number_of_orders desc limit 3;
+
+Problem 4:
+Ans. 
+SELECT *
+FROM
+  sale
+GROUP BY
+  product_id
+ORDER BY
+  COUNT(*) DESC;
+
+Problem 5:
+Ans.
+SELECT
+  product_id,
+  COUNT(order_id) AS number_of_orders
+FROM
+  sale
+GROUP BY
+  product_id
+HAVING
+  COUNT(order_id) == 1;
+
+Problem 6:
+Ans.
+SELECT p.*,s.product_id, COUNT(*) AS number_of_orders FROM sale s,product p where p.product_id = s.product_id GROUP by s.product_id order by number_of_orders desc limit 3;
+**need optimization
+
+Problem 8:
+Ans.
+SELECT
+  product_name,list_price
+FROM
+  product
+WHERE
+  product_id IN (
+    SELECT
+      product_id
+    FROM
+      sale
+    GROUP BY
+      product_id
+    HAVING
+      COUNT(*) == 1
+  );
